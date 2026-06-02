@@ -27,16 +27,75 @@ const { title = 'Wassim Serhan Photographs' } = Astro.props;
 				<a href="/" class="logo">
 					<img src="/logo.webp" alt="Wassim Serhan" class="logo-img" />
 				</a>
-				<ul>
+				<ul class="desktop-menu">
 					<li><a href="/">Photographs</a></li>
+					<li class="has-dropdown">
+						<span class="projects-label">Projects</span>
+						<ul class="dropdown">
+							<div class="dropdown-inner">
+								<li><a href="/projects/haiti">Haiti</a></li>
+							</div>
+						</ul>
+					</li>
 					<li><a href="/about">About</a></li>
 					<li><a href="/contact">Contact</a></li>
 				</ul>
+				<button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
 			</nav>
 		</header>
+
+		<div id="mobile-menu" role="dialog" aria-label="Navigation menu">
+			<button class="mobile-close" aria-label="Close menu">
+				<span></span>
+				<span></span>
+			</button>
+			<ul>
+				<li><a href="/">Photographs</a></li>
+				<li>
+					<span class="projects-label">Projects</span>
+					<ul class="mobile-sub">
+						<li><a href="/projects/haiti">Haiti</a></li>
+					</ul>
+				</li>
+				<li><a href="/about">About</a></li>
+				<li><a href="/contact">Contact</a></li>
+			</ul>
+		</div>
 		<slot />
 	</body>
 </html>
+
+<script>
+	const btn = document.querySelector('.hamburger') as HTMLButtonElement;
+	const closeBtn = document.querySelector('.mobile-close') as HTMLButtonElement;
+	const menu = document.getElementById('mobile-menu');
+
+	function openMenu() {
+		btn.setAttribute('aria-expanded', 'true');
+		menu?.classList.add('is-open');
+		document.body.classList.add('menu-open');
+	}
+
+	function closeMenu() {
+		btn.setAttribute('aria-expanded', 'false');
+		menu?.classList.remove('is-open');
+		document.body.classList.remove('menu-open');
+	}
+
+	btn?.addEventListener('click', () => {
+		btn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+	});
+
+	closeBtn?.addEventListener('click', closeMenu);
+
+	menu?.querySelectorAll('a').forEach(link => {
+		link.addEventListener('click', closeMenu);
+	});
+</script>
 
 <style>
 	:global(*, *::before, *::after) {
@@ -122,18 +181,193 @@ const { title = 'Wassim Serhan Photographs' } = Astro.props;
 		color: #f0f0f0;
 	}
 
+	.has-dropdown {
+		position: relative;
+	}
+
+	.projects-label {
+		font-size: 0.68rem;
+		font-weight: 400;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: #bbb;
+		cursor: default;
+		user-select: none;
+	}
+
+	.projects-label::after {
+		content: ' ▾';
+		font-size: 0.55rem;
+		opacity: 0.6;
+	}
+
+	.dropdown {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		padding-top: 12px;
+		background: transparent;
+		min-width: 120px;
+		flex-direction: column;
+		gap: 0;
+	}
+
+	.dropdown-inner {
+		background: rgba(12, 12, 12, 0.95);
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		padding: 0.5rem 0;
+	}
+
+	.has-dropdown:hover .dropdown {
+		display: flex;
+	}
+
+	.dropdown li {
+		list-style: none;
+	}
+
+	.dropdown a {
+		display: block;
+		padding: 0.6rem 1.25rem;
+		white-space: nowrap;
+	}
+
+	.dropdown a:hover {
+		background: rgba(255, 255, 255, 0.05);
+	}
+
+	.hamburger {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 5px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 4px;
+		z-index: 101;
+	}
+
+	.hamburger span {
+		display: block;
+		width: 22px;
+		height: 1px;
+		background: #bbb;
+		transition: transform 0.25s, opacity 0.25s;
+		transform-origin: center;
+	}
+
+	.hamburger[aria-expanded='true'] span:nth-child(1) {
+		transform: translateY(6px) rotate(45deg);
+	}
+
+	.hamburger[aria-expanded='true'] span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.hamburger[aria-expanded='true'] span:nth-child(3) {
+		transform: translateY(-6px) rotate(-45deg);
+	}
+
+	.mobile-close {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 4px;
+		width: 28px;
+		height: 28px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.mobile-close span {
+		position: absolute;
+		width: 22px;
+		height: 1px;
+		background: #bbb;
+		display: block;
+	}
+
+	.mobile-close span:nth-child(1) {
+		transform: rotate(45deg);
+	}
+
+	.mobile-close span:nth-child(2) {
+		transform: rotate(-45deg);
+	}
+
+	#mobile-menu {
+		display: none;
+		position: fixed;
+		inset: 0;
+		background: #080808;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		z-index: 200;
+	}
+
+	#mobile-menu.is-open {
+		display: flex;
+	}
+
+	#mobile-menu > ul {
+		flex-direction: column;
+		align-items: center;
+		gap: 2.5rem;
+	}
+
+	#mobile-menu > ul > li {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+		text-align: center;
+	}
+
+	#mobile-menu > ul > li > a,
+	#mobile-menu .projects-label {
+		font-size: 0.8rem;
+		letter-spacing: 0.25em;
+	}
+
+	#mobile-menu .projects-label::after {
+		display: none;
+	}
+
+	.mobile-sub {
+		flex-direction: row;
+		gap: 1.5rem;
+	}
+
+	.mobile-sub a {
+		font-size: 0.65rem !important;
+		color: #666 !important;
+	}
+
 	@media (max-width: 600px) {
 		nav {
 			padding: 0 1.25rem;
 		}
 
-		.logo {
-			font-size: 0.85rem;
-			letter-spacing: 0.1em;
+		.hamburger {
+			display: flex;
 		}
 
-		ul {
-			gap: 1.5rem;
+		.desktop-menu {
+			display: none;
+		}
+
+		:global(body.menu-open) {
+			overflow: hidden;
 		}
 	}
 </style>
