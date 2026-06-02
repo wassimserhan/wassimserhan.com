@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Message Sent — Wassim Serhan Photographs">
+	<main class="success">
+		<div class="content">
+			<h1>Thank you</h1>
+			<p class="message">Your message has been sent. I'll be in touch soon.</p>
+			<a href="/" class="back">Back to photographs</a>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.success {
+		padding-top: 64px;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.content {
+		max-width: 480px;
+		width: 100%;
+		padding: 4rem 2rem;
+		text-align: center;
+	}
+
+	h1 {
+		font-family: 'Inter', system-ui, sans-serif;
+		font-size: 1.05rem;
+		font-weight: 400;
+		letter-spacing: 0.3em;
+		text-transform: uppercase;
+		color: #f0f0f0;
+		margin: 0 0 1.5rem;
+	}
+
+	.message {
+		font-size: 0.85rem;
+		line-height: 1.85;
+		color: #666;
+		margin: 0 0 2.5rem;
+		letter-spacing: 0.05em;
+	}
+
+	.back {
+		font-size: 0.68rem;
+		font-weight: 400;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: #888;
+		text-decoration: none;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		padding-bottom: 2px;
+		transition: color 0.2s, border-color 0.2s;
+	}
+
+	.back:hover {
+		color: #f0f0f0;
+		border-color: rgba(255, 255, 255, 0.6);
+	}
+</style>
