@@ -48,10 +48,13 @@ const { title = 'Wassim Serhan' } = Astro.props;
 		</header>
 
 		<div id="mobile-menu" role="dialog" aria-label="Navigation menu">
-			<button class="mobile-close" aria-label="Close menu">
-				<span></span>
-				<span></span>
-			</button>
+			<div class="mobile-header">
+				<a href="/" class="mobile-logo">Wassim Serhan</a>
+				<button class="mobile-close" aria-label="Close menu">
+					<span></span>
+					<span></span>
+				</button>
+			</div>
 			<ul>
 				<li><a href="/">Photographs</a></li>
 				<li>
@@ -271,10 +274,31 @@ const { title = 'Wassim Serhan' } = Astro.props;
 		transform: translateY(-6px) rotate(-45deg);
 	}
 
-	.mobile-close {
+	.mobile-header {
 		position: absolute;
-		top: 20px;
-		right: 20px;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 64px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 1.25rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	}
+
+	.mobile-logo {
+		font-family: 'Inter', system-ui, sans-serif;
+		font-size: 1.375rem;
+		font-weight: 400;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: #f0f0f0;
+		text-decoration: none;
+	}
+
+	.mobile-close {
+		position: static;
 		background: none;
 		border: none;
 		cursor: pointer;
@@ -342,8 +366,9 @@ const { title = 'Wassim Serhan' } = Astro.props;
 	}
 
 	.mobile-sub {
-		flex-direction: row;
-		gap: 1.5rem;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem !important;
 	}
 
 	.mobile-sub a {
