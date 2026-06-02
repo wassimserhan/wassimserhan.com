@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+const imageFiles = import.meta.glob<{ default: ImageMetadata }>(
+	'../../assets/projects/tartan-day/*.{jpg,jpeg,webp,png}',
+	{ eager: true }
+);
+
+const photos = Object.entries(imageFiles)
+	.sort(([a], [b]) => a.localeCompare(b))
+	.map(([path, mod]) => ({
+		src: mod.default,
+		alt: path.split('/').pop()?.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ') ?? '',
+	}));
+---
+
+<Layout title="Tartan Day — Wassim Serhan Photographs">
+	<main class="gallery">
+		<div class="project-title">
+			<h1>Tartan Day</h1>
+		</div>
+		{
+			photos.length > 0 ? (
+				photos.map((photo, i) => (
+					<figure>
+						<Image
+							src={photo.src}
+							alt={photo.alt}
+							loading={i === 0 ? 'eager' : 'lazy'}
+							widths={[800, 1400, 2400]}
+							sizes="100vw"
+						/>
+					</figure>
+				))
+			) : (
+				<div class="empty">No photos yet — add images to <code>src/assets/projects/haiti/</code></div>
+			)
+		}
+	</main>
+</Layout>
+
+<style>
+	.gallery {
+		padding-top: 64px;
+		margin: 0;
+	}
+
+	.project-title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 5rem 2rem 3rem;
+	}
+
+	h1 {
+		font-family: 'Inter', system-ui, sans-serif;
+		font-size: 1.05rem;
+		font-weight: 400;
+		letter-spacing: 0.3em;
+		text-transform: uppercase;
+		color: #f0f0f0;
+		margin: 0;
+	}
+
+	figure {
+		margin: 0;
+		padding: 0;
+		line-height: 0;
+	}
+
+	figure + figure {
+		margin-top: 3px;
+	}
+
+	img {
+		width: 100vw;
+		height: auto;
+		display: block;
+	}
+
+	.empty {
+		text-align: center;
+		color: #555;
+		font-size: 0.85rem;
+		padding: 4rem 2rem;
+		letter-spacing: 0.05em;
+	}
+
+	.empty code {
+		color: #777;
+	}
+</style>
