@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About — Wassim Serhan Photographs">
+	<main class="about">
+		<div class="content">
+			<h1>About</h1>
+			<p class="bio">
+				Wassim Serhan is a photographer who lives and works in New York City. From a young age, Wassim has always had an interest in people, a curiosity that inspired him to create photographs, turning the mundane into a spectacle illusion. Wassim’s passion for candid street style photography started in 2003 where he was part of the team filming a documentary about Haiti. Intuition is a key factor in Wassim’s street photography work; using the streets as scenes to communicate and story-tell. Travel is important for Wassim, learning about new cultures, and using the streets as visual playground for inspiration for new bodies of work.
+			</p>
+			<a href="/contact" class="cta">Get in touch</a>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.about {
+		padding-top: 64px;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.content {
+		max-width: 560px;
+		padding: 4rem 2rem;
+		text-align: center;
+	}
+
+	h1 {
+		font-family: 'Cormorant Garamond', Georgia, serif;
+		font-size: 2.5rem;
+		font-weight: 300;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: #f0f0f0;
+		margin: 0 0 2.5rem;
+	}
+
+	.bio {
+		font-size: 0.95rem;
+		line-height: 1.85;
+		color: #999;
+		margin: 0 0 1.25rem;
+		text-align: left;
+	}
+
+	.available {
+		font-size: 0.75rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		line-height: 1.6;
+		color: #666;
+		margin: 1.5rem 0 0;
+		text-align: left;
+	}
+
+	.cta {
+		display: inline-block;
+		margin-top: 2rem;
+		font-size: 0.68rem;
+		font-weight: 400;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: #888;
+		text-decoration: none;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		padding-bottom: 2px;
+		transition: color 0.2s, border-color 0.2s;
+	}
+
+	.cta:hover {
+		color: #f0f0f0;
+		border-color: rgba(255, 255, 255, 0.6);
+	}
+</style>

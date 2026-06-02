@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact — Wassim Serhan Photographs">
+	<main class="contact">
+		<div class="content">
+			<h1>Contact</h1>
+			<p class="subtitle">For inquiries, commissions, or just to say hello.</p>
+			<a href="mailto:hello@wassimserhan.com" class="email">hello@wassimserhan.com</a>
+			<div class="social">
+				<a href="https://instagram.com/wassimserhan" target="_blank" rel="noopener noreferrer">Instagram</a>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.contact {
+		padding-top: 64px;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.content {
+		max-width: 520px;
+		padding: 4rem 2rem;
+		text-align: center;
+	}
+
+	h1 {
+		font-family: 'Cormorant Garamond', Georgia, serif;
+		font-size: 2.5rem;
+		font-weight: 300;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: #f0f0f0;
+		margin: 0 0 1.5rem;
+	}
+
+	.subtitle {
+		font-size: 0.9rem;
+		line-height: 1.85;
+		color: #777;
+		margin: 0 0 2.5rem;
+	}
+
+	.email {
+		display: block;
+		font-family: 'Cormorant Garamond', Georgia, serif;
+		font-size: 1.35rem;
+		font-weight: 300;
+		letter-spacing: 0.06em;
+		color: #c8c8c8;
+		text-decoration: none;
+		transition: color 0.2s;
+		margin-bottom: 2.5rem;
+	}
+
+	.email:hover {
+		color: #ffffff;
+	}
+
+	.social {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+	}
+
+	.social a {
+		font-size: 0.68rem;
+		font-weight: 400;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: #666;
+		text-decoration: none;
+		transition: color 0.2s;
+	}
+
+	.social a:hover {
+		color: #f0f0f0;
+	}
+</style>
