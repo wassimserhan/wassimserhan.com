@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
 const imageFiles = import.meta.glob<{ default: ImageMetadata }>(
-	'../../assets/projects/tartan-day/*.{jpg,jpeg,webp,png}',
+	'../../assets/projects/keep-this-far-apart/*.{jpg,jpeg,webp,png}',
 	{ eager: true }
 );
 
@@ -15,10 +15,10 @@ const photos = Object.entries(imageFiles)
 	}));
 ---
 
-<Layout title="Tartan Day — Wassim Serhan">
+<Layout title="Keep This Far Apart — Wassim Serhan">
 	<main class="gallery">
 		<div class="project-title">
-			<h1>Tartan Day</h1>
+			<h1>Keep This Far Apart</h1>
 		</div>
 		{
 			photos.length > 0 ? (
@@ -34,7 +34,7 @@ const photos = Object.entries(imageFiles)
 					</figure>
 				))
 			) : (
-				<div class="empty">No photos yet — add images to <code>src/assets/projects/tartan-day/</code></div>
+				<div class="empty">No photos yet — add images to <code>src/assets/projects/keep-this-far-apart/</code></div>
 			)
 		}
 	</main>
