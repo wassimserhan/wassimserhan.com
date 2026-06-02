@@ -24,9 +24,7 @@ const { title = 'Wassim Serhan Photographs' } = Astro.props;
 	<body>
 		<header>
 			<nav>
-				<a href="/" class="logo">
-					<img src="/logo.webp" alt="Wassim Serhan" class="logo-img" />
-				</a>
+				<a href="/" class="logo">Wassim Serhan</a>
 				<ul class="desktop-menu">
 					<li><a href="/">Photographs</a></li>
 					<li class="has-dropdown">
@@ -143,20 +141,18 @@ const { title = 'Wassim Serhan Photographs' } = Astro.props;
 	}
 
 	.logo {
+		font-family: 'Inter', system-ui, sans-serif;
+		font-size: 1.375rem;
+		font-weight: 400;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: #f0f0f0;
 		text-decoration: none;
-		display: flex;
-		align-items: center;
-		transition: opacity 0.2s;
+		transition: color 0.2s;
 	}
 
 	.logo:hover {
-		opacity: 0.75;
-	}
-
-	.logo-img {
-		height: 28px;
-		width: auto;
-		filter: invert(1);
+		color: #ffffff;
 	}
 
 	ul {
