@@ -53,6 +53,12 @@ const photos = Object.entries(imageFiles)
 		padding: 5rem 2rem 3rem;
 	}
 
+	@media (max-width: 768px) {
+		.project-title {
+			padding: 2rem 2rem 1.5rem;
+		}
+	}
+
 	h1 {
 		font-family: 'Inter', system-ui, sans-serif;
 		font-size: 1.05rem;
@@ -67,10 +73,6 @@ const photos = Object.entries(imageFiles)
 		margin: 0;
 		padding: 0;
 		line-height: 0;
-		height: calc(100vh - 64px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
 	}
 
 	figure + figure {
@@ -79,8 +81,7 @@ const photos = Object.entries(imageFiles)
 
 	img {
 		width: 100%;
-		height: 100%;
-		object-fit: contain;
+		height: auto;
 		display: block;
 	}
 
