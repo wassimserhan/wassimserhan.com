@@ -122,7 +122,24 @@ const { title = 'Wassim Serhan' } = Astro.props;
 		font-weight: 300;
 	}
 
-	:global(img) {
+	:global(figure) {
+		margin: 0;
+		padding: 0;
+		line-height: 0;
+		height: calc(100dvh - 64px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	:global(figure + figure) {
+		margin-top: 5px;
+	}
+
+	:global(.gallery img) {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
 		display: block;
 	}
 
@@ -379,6 +396,10 @@ const { title = 'Wassim Serhan' } = Astro.props;
 	}
 
 	@media (max-width: 600px) {
+		:global(figure) {
+			height: auto;
+		}
+
 		nav {
 			padding: 0 1.25rem;
 		}
