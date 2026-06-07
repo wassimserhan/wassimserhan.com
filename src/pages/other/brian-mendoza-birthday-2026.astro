@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
 const imageFiles = import.meta.glob<{ default: ImageMetadata }>(
-	'../../assets/other/brian-mendoza-birthday/*.{jpg,jpeg,webp,png}',
+	'../../assets/other/brian-mendoza-birthday-2026/*.{jpg,jpeg,webp,png}',
 	{ eager: true }
 );
 
@@ -34,7 +34,7 @@ const photos = Object.entries(imageFiles)
 					</figure>
 				))
 			) : (
-				<div class="empty">No photos yet — add images to <code>src/assets/other/brian-mendoza-birthday/</code></div>
+				<div class="empty">No photos yet — add images to <code>src/assets/other/brian-mendoza-birthday-2026/</code></div>
 			)
 		}
 	</main>
