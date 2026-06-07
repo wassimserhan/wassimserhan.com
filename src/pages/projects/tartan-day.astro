@@ -8,7 +8,7 @@ const imageFiles = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 const photos = Object.entries(imageFiles)
-	.sort(([a], [b]) => a.localeCompare(b))
+	.sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
 	.map(([path, mod]) => ({
 		src: mod.default,
 		alt: path.split('/').pop()?.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ') ?? '',
@@ -74,7 +74,7 @@ const photos = Object.entries(imageFiles)
 	}
 
 	figure + figure {
-		margin-top: 3px;
+		margin-top: 5px;
 	}
 
 	img {
